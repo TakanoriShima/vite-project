@@ -31,8 +31,12 @@ export default defineComponent({
       input: '',
       displayName: ''
     })
+    const pushMessage = (chatData) => {
+      data.chat.push(chatData) // 引数で受け取ったChatDataを配列にpush
+    };
     return {
-      data
+      data,
+      pushMessage
     }
   },
 })
@@ -41,7 +45,7 @@ export default defineComponent({
 <template>
   <div class="container">
     <View :data="data" />
-    <Send />
+    <Send @sendMessage="pushMessage" />
   </div>
 </template>
 
