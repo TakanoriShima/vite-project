@@ -13,6 +13,7 @@ import { initializeApp } from "firebase/app";
 const firebaseConfig = {
   apiKey: "AIzaSyA1B_SdXYGAY8xkoRDKMsXkoQJWstsEYuA",
   authDomain: "vite-project-dcb16.firebaseapp.com",
+  databaseURL: "https://vite-project-dcb16-default-rtdb.firebaseio.com",
   projectId: "vite-project-dcb16",
   storageBucket: "vite-project-dcb16.appspot.com",
   messagingSenderId: "840282148464",
