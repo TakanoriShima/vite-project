@@ -11,7 +11,23 @@ export default defineComponent({
   setup() {
     const data = reactive({
       user: {},
-      chat: [],
+      chat: [
+        {
+          displayName: "テスト1さん",
+          uid: "test1",
+          message: "ああああああ",
+        },
+        {
+          displayName: "テスト2さん",
+          uid: "test2",
+          message: "いいいいい",
+        },
+        {
+          displayName: "テスト3さん",
+          uid: "test3",
+          message: "ううううう",
+        },
+      ],
       input: '',
       displayName: ''
     })
@@ -24,7 +40,7 @@ export default defineComponent({
 
 <template>
   <div class="container">
-    <View />
+    <View :data="data" />
     <Send />
   </div>
 </template>
