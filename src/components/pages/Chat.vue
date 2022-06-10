@@ -3,6 +3,7 @@ import { defineComponent, reactive } from 'vue'
 import View from '../chat/View.vue'
 import Send from '../chat/Send.vue'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getDatabase, ref, push } from "firebase/database";
 
 export default defineComponent({
   components: {
@@ -32,8 +33,12 @@ export default defineComponent({
       input: '',
       displayName: ''
     })
+    data.user = getAuth().currentUser;
     const pushMessage = (chatData) => {
-      data.chat.push(chatData) // 引数で受け取ったChatDataを配列にpush
+      chatData.uid = data.user.uid // 追加
+      data.chat.push(chatData)
+      const db = getDatabase();
+      push(ref(db, 'chat'), chatData);
     };
     return {
       data,
