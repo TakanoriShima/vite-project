@@ -1,14 +1,25 @@
 <script setup>
-import { reactive } from '@vue/reactivity' // 追加
+import { reactive } from '@vue/reactivity'
 import Email from '../input/Email.vue'
-import Password from '../input/Password.vue' // 追加
+import Password from '../input/Password.vue'
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 const data = reactive({
   email: "",
   password: "",
   passwordReinput: "",
 });
+
+const auth = getAuth();
 const signUp = () => {
-  console.log(data)
+  createUserWithEmailAndPassword(auth, data.email, data.password)
+    .then((userCredential) => {
+      alert("ユーザー作成に成功しました！")
+    })
+    .catch((error) => {
+      console.log(error)
+      alert("ユーザー作成に失敗しました")
+    })
 }
 </script>
 
